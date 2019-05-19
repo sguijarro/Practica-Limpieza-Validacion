@@ -17,7 +17,9 @@ La actividad ha sido realizada de forma grupal por:
 * **src/**: El código fuente.
  
 ### **Dataset original:**
-* **csv_original/**: fichero con el dataset original.
+* **csv_original/train.csv**: fichero con el dataset original de entrenamiento, para crear el modelo de machine learning.
+* **csv_original/test.csv**: fichero con el dataset original de test, para validar la calidad del modelo creado.
+* **csv_original/gender_submission.csv**: fichero con las predicciones de supervivencia únicamente y de todas las mujeres.
  
 ### **Final dataset:**
 * **csv_final/**: fichero con el dataset final.
