@@ -14,7 +14,7 @@ La actividad ha sido realizada de forma grupal por:
 * **Practica2.pdf**: PDF que contiene la respuesta a la practica.
 
 ### **Código fuente:**
-* **src/**: El código fuente.
+* **src/LimpiezaValidacion.R**: El código fuente.
  
 ### **Dataset original:**
 * **csv_original/train.csv**: fichero con el dataset original de entrenamiento, para crear el modelo de machine learning.
