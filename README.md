@@ -12,8 +12,8 @@ La actividad ha sido realizada de forma grupal por:
 ## **Tabla de contenidos:**
 
 ### **Respuestas a la práctica:**
-* **LimpiezaValidacion.pdf**: PDF que contiene la respuesta a la practica.
-* **LimpiezaValidacion.html**: html que contiene la respuesta a la practica.
+* **LimpiezaValidacion.pdf**: PDF que contiene la respuesta a la práctica.
+* **LimpiezaValidacion.html**: html que contiene la respuesta a la práctica.
 
 ### **Código fuente:**
 * **src/LimpiezaValidacion.R**: El código fuente.
