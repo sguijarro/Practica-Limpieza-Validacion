@@ -3,15 +3,15 @@ title: 'Tipología y ciclo de vida de los datos: Práctica2 - Limpieza y validació
 author: "Autor: Paula León Gil-Gibernau (aula 1) y Silvina Guijarro Domingo (aula 2)"
 date: "Junio 2019"
 output:
+  pdf_document:
+    highlight: zenburn
+    toc: yes
   html_document:
     highlight: default
     number_sections: yes
     theme: cosmo
     toc: yes
     toc_depth: 2
-  pdf_document:
-    highlight: zenburn
-    toc: yes
   word_document: default
 ---
 
@@ -136,3 +136,4 @@ colSums(data_train=="")
 ## **A partir de los resultados obtenidos, ¿cuáles son las conclusiones?**
 
 ## **¿Los resultados permiten responder al problema?**
+
