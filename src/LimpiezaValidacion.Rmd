@@ -1,0 +1,138 @@
+---
+title: 'Tipología y ciclo de vida de los datos: Práctica2 - Limpieza y validación de los datos'
+author: "Autor: Paula León Gil-Gibernau (aula 1) y Silvina Guijarro Domingo (aula 2)"
+date: "Junio 2019"
+output:
+  html_document:
+    highlight: default
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+    toc_depth: 2
+  pdf_document:
+    highlight: zenburn
+    toc: yes
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval=T, echo=T)
+```
+
+******
+# **Presentación**
+******
+
+En esta práctica se debe elaborar un caso práctico orientado a aprender a identificar los datos relevantes para un proyecto analítico y usar las herramientas de integración, limpieza, validación y análisis de las mismas. 
+<br>El objetivo de esta actividad será el tratamiento, limpieza y validación de los datos, del dataset del Titanic: Machine Learning from Disaster (https://www.kaggle.com/c/titanic ).
+
+******
+# **Descripción del dataset**
+******
+
+## **Carga de los datos**
+Cargamos los archivos de datos de train, test y gender_submission: 
+
+```{r message= FALSE, warning=FALSE}
+data_train<-read.csv("../csv_original/train.csv", header=T, sep=",")
+data_test_original<-read.csv("../csv_original/test.csv", header=T, sep=",")
+data_real<-read.csv("../csv_original/gender_submission.csv", header=T, sep=",") 
+str(data_train)
+str(data_test_original)
+str(data_real)
+```
+<br>El dataset está compuesto de dos conjuntos uno de entrenamiento y otro de test-
+<br>El conjunto de entrenamiento, tiene un total de 891 observaciones/muestras y 12 variables/atributos, de los cuales uno es nuestro atributo objetivo (Survived) que será 0 si no sobrevivió o 1 si sobrevivió. 
+<br>El conjunto de test, está compuesto por 418 observaciones/muestras y un total de 11 variables/atributos, puesto que el atributo objetivo es el que tenemos que predecir. La predicción real de estas observaciones está en el fichero gender_submission.csv.
+<br>En esta tabla se muestran las variables/atributos:
+
+1. PassengerId: Id del pasajero. Tipo: integer.
+2. Survived: Si sobrevivieron, 0=no, 1=sí. Tipo: Factor.
+3. Pclass: Clase, 1=primera, 2=segunda, 3=tercera. Tipo: Factor.
+4. Name: Nombre. Tipo: Factor.
+5. Sex: Sexo. Tipo: Factor.
+6. Age: Años de edad. Tipo: Num. 
+7. SibSp:	Número de parientes como hermanos, hermanas, esposo o esposa.. Tipo: Integer.
+8. Parch:	Número de parientes como padre, madre, hijo, hija.. Tipo: Integer.
+9. Ticket: Número de ticket. Tipo: Factor.
+10. Fare:	Tarifa de pasajero. Tipo: Num. 
+11. Cabin:	Número de cabina. Tipo: Factor.
+12. Embarked	Puerto de embarque, C=Cherbourg, Q=Queenstown, S=Southampton. Tipo: Factor.
+
+## **¿Por qué es importante y qué pregunta/problema pretende responder?**
+La pregunta/problema que se pretende responder es qué grupos de personas sobrevivieron a la tragedia del Titanic. Es decir qué clase de personas tenían más números de sobrevivir, ¿niños, mujeres, clase alta?
+<br>Se trata por tanto de crear un modelo a partir de los datos de entrenamiento que dada una observación del conjunto de test sea capaz de predecir si el pasajero sobrevivió o no.
+<br>Esta pregunta es binaria, es decir que la clasificación que se pretende hacer con el dataset es superviviente y no supervivientes. 
+
+******
+# **Limpieza de los datos**
+******
+
+## **Integración**
+
+Como los datos de test los tenemos en dos archivos/datasets distintos, los uniremos usando la función de r merge, por la variable PassangerId, obteniendo así un único dataset de test para saber el accuracy de nuestro modelo, creado con el conjunto de entrenamiento. 
+```{r message= FALSE, warning=FALSE}
+data_test<-merge(data_test_original, data_real, by.x="PassengerId", by.y="PassengerId")
+str(data_test)
+```
+
+## **Análisis visual de los datos**
+
+Las variables de tipo factor, que son variables cualitativas que pueden tomar pocos valores, se representarán visualmente mediante diagramas de barras:
+```{r message= FALSE, warning=FALSE}
+colors=c("orange","blue","green", "purple")
+barplot(prop.table(table(data_train$Pclass)),col=colors,main="Pclass")
+barplot(prop.table(table(data_train$Sex)),col=colors,main="Sex")
+barplot(prop.table(table(data_train$Embarked)),col=colors,main="Embarked")
+```
+<br>Las variables de tipo integer, que son variables cuantitativas discretas que no toman demasiados valores, se representarán visualmente mediante diagramas de barras:
+```{r message= FALSE, warning=FALSE}
+#install.packages("rainbow")#paleta de colores
+library("rainbow") 
+colors=rainbow(40)
+barplot(prop.table(table(data_train$SibSp)),col=colors,main="SibSp")
+barplot(prop.table(table(data_train$Parch)),col=colors,main="Parch")
+```
+
+<br>Las variables de tipo numeric, que son variables cuantitativas continuas, se representarán visualmente mediante histogramas:
+```{r message= FALSE, warning=FALSE}
+hist(data_train$Age,col=colors)
+hist(data_train$Fare,col=colors)
+```
+
+## **Selección de los datos de interés a analizar**
+Existen variables/atributos que no aportan informacion relevante a la supervivencia de los pasajeros. Estas variables son:
+PassengerId, Name, Ticket y Cabin.
+
+## **Datos perdidos**
+```{r message= FALSE, warning=FALSE}
+colSums(is.na(data_train))
+colSums(data_train=="")
+```
+
+
+## **Valores extremos**
+
+
+******
+# **Análisis de los datos**
+******
+
+## **Selección de los grupos de datos que se quieren analizar/comparar (planificación de los análisis a aplicar)**
+
+## **Comprobación de la normalidad y homogeneidad de la varianza**
+
+## **Aplicación de pruebas estadísticas para comparar los grupos de datos. En función de los datos y el objetivo del estudio, aplicar pruebas de contraste de hipótesis, correlaciones, regresiones, etc. Aplicar al menos tres métodos de análisis diferentes**
+
+******
+# **Representación de los resultados**
+******
+
+
+******
+# **Resolución del problema**
+******
+
+## **A partir de los resultados obtenidos, ¿cuáles son las conclusiones?**
+
+## **¿Los resultados permiten responder al problema?**
