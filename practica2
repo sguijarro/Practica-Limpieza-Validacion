@@ -1,0 +1,39 @@
+1.	Presentación
+En esta práctica se debe elaborar un caso práctico orientado a aprender a identificar los datos relevantes para un proyecto analítico y usar las herramientas de integración, limpieza, validación y análisis de las mismas. 
+El objetivo de esta actividad será el tratamiento del dataset del Titanic: Machine Learning from Disaster (https://www.kaggle.com/c/titanic ).
+2.	Descripción del dataset
+ El conjunto de datos objeto de análisis se ha extraído de https://www.kaggle.com/c/titanic. Este dataset está constituido  por dos bases de datos, uno de entrenamiento y otro de test de validación. Para poder predecir las variables asociadas a la supervivencias, nos hemos centrado en el uso del dataset de entrenamiento, que está configurado por un total de 12 variables (columnas) de una muestra de 891 sujetos ( filas o registros). Para comprobar nuestras predicciones nos centraemos en el uso del dataset test que esta formado por 11 variables de una muestra 418 sujetos. Los campos de este conjunto de datos encontramos las siguientes variables:
+survival	Survival	0 = No, 1 = Yes
+pclass	Ticket class	1 = 1st, 2 = 2nd, 3 = 3rd
+sex	Sex	
+Age	Age in years	
+sibsp	# of siblings / spouses aboard the Titanic	
+parch	# of parents / children aboard the Titanic	
+ticket	Ticket number	
+fare	Passenger fare	
+cabin	Cabin number	
+embarked	Port of Embarkation	C = Cherbourg, Q = Queenstown, S = Southampton
+Variable Notes
+pclass: A proxy for socio-economic status (SES)
+1st = Upper
+2nd = Middle
+3rd = Lower
+
+age: Age is fractional if less than 1. If the age is estimated, is it in the form of xx.5
+
+sibsp: The dataset defines family relations in this way...
+Sibling = brother, sister, stepbrother, stepsister
+Spouse = husband, wife (mistresses and fiancés were ignored)
+
+parch: The dataset defines family relations in this way...
+Parent = mother, father
+Child = daughter, son, stepdaughter, stepson
+Some children travelled only with a nanny, therefore parch=0 for them.
+
+           
+2.1.	¿Por qué es importante y qué pregunta/problema pretende responder?
+El hundimiento del Titanic ha sido uno de los naufragios más famosos de la historia.  La noche del 14 al  15 de abril de 1912, en su viaje inaugural, el Titanic se hundió después de chocar con un iceberg en el océano Atlántico. En dicho naufragio fallecieron 1502 personas, de los 2224 personas contabilizados entre pasajeros y tripulación. Esta desgracia conmocionó a la comunidad internacional, tras su hundimiento se realizaron varias comisiones de investigación de la tragedia que sirvieron para realizar mejoras en la regulación de seguridad marítima de transatlánticos.
+
+Una de las razones por las que el naufragio produjo tantas pérdidas fue porque no había suficientes botes salvavidas para los pasajeros y la tripulación. Aunque es probable que hubiera algún factor de azar involucrado en la supervivencia al hundimiento, algunos grupos de personas como las mujeres, los niños y los pasajeros de  clase alta tuvieron más probabilidades de sobrevivir que otros.
+
+El siguiente análisis tiene como objetivo poder predecir qué características poseían las personas que tuvieron más probabilidades de sobrevivir. 
